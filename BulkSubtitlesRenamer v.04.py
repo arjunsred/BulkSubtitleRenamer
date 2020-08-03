@@ -1,7 +1,8 @@
 # Bulk Subtitle Renamer
-# Version 0.4
+# Version 0.5
 
 import os
+import webbrowser
 import glob
 import tkinter as tk
 from tkinter import messagebox
@@ -41,11 +42,34 @@ ss = 0
 ev = 0
 sv = 0 
 
-def closeApp():
-    root.withdraw()
-
 def aboutApp():
+
+    def callback():
+        webbrowser.open_new(r"https://github.com/arjunsred/BulkSubtitleRenamer/find/master")
+
     newWindow = tk.Toplevel(root)
+    newWindow.attributes("-toolwindow", 1)
+
+    os.chdir('D:\\Python\\VscodePython\\Projects')
+
+    label6 = Label(newWindow, text="BulkSubtitleRenamer 0.8 (x64)")
+    label6.pack(side = TOP, pady = 8,padx = 12,anchor = W)
+
+    label7 = Label(newWindow, text="2020-07-23")
+    label7.pack(side = TOP,  padx = 12, anchor = W)
+
+    label8 = Label(newWindow, text="Copyright (c) 2020")
+    label8.pack(side = TOP,  pady = 8, padx = 12, anchor = W)
+
+    label9 = Label(newWindow, text="BulkSubtitleRenamer is a free software")
+    label9.pack(side = TOP, padx = 12, anchor = W)
+    
+    label10 = Label(newWindow, text="Go to website",cursor="hand2", fg="blue")
+    label10.pack(side = TOP,pady = 8, padx = 12, anchor = W)
+    label10.bind("<Button-1>", lambda e: callback())
+                                             
+    newWindow.mainloop()
+
 
 def RadioButton():
     method.clear()
@@ -56,8 +80,7 @@ def RightM():
     a = RadioButton()
     if a == 1:
         RenameF()    
-    if a == 2:
-        
+    if a == 2: 
         RenameN() 
 
 def addApp():
@@ -318,21 +341,10 @@ class CreateToolTip(object):
         if self.tw:
             self.tw.destroy()
 
-def hide_me(event):
-    event.widget.pack_forget()
-    sleep(2)
-    event.widget.pack()
-
 menubar = Menu(root)   
 canvas = tk.Canvas(root)
 
 filemenu = Menu(menubar, tearoff=0)
-
-filemenu.add_command(label="Open",command = addApp)
-filemenu.add_command(label="Close",command = closeApp)
-
-filemenu.add_separator()
-
 filemenu.add_command(label="Exit", command=root.quit)
 menubar.add_cascade(label="File", menu=filemenu)
 

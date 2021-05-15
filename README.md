@@ -1,4 +1,4 @@
-BulkSubtitlesRenamer-renaming app
+BulkSubtitlesRenamer-movie and subtitles renaming app
 
 Simple app created for renaming a bulk of video and subtitle files.
 It is created with Python.
